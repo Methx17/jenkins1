@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "methx17/jenkins"
+        IMAGE_NAME = "methx18/jenkins"
         ID = "$BUILD_ID"
         
     }
