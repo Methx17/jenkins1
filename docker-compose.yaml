@@ -1,6 +1,6 @@
 services:
   web:
-    iamge: dayanandpy/pyapp:latest
+    image: dayanandpy/pyapp:latest
     ports:
       - "80:5000"
   
