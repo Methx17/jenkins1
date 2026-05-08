@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "dayanandpy/pyapp"
+        IMAGE_NAME = "methx17/jenkins"
         ID = "$BUILD_ID"
         
     }
@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-                git credentialsId: 'github-cred', url: 'https://github.com/dayanandagowda222/pyapp.git'
+                git 'https://github.com/Methx17/jenkins1.git'
             }
         }
         stage('test and install') {
@@ -28,8 +28,8 @@ pipeline {
         }
         stage('docker login') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-cred', passwordVariable: 'pswd', usernameVariable: 'username')]) {
-                    sh  'echo "$pswd" | docker login -u $username --password-stdin'
+                withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'pswd', usernameVariable: 'username')]) {
+                sh  'echo "$pswd" | docker login -u $username --password-stdin'
                 }
             }
         }
@@ -49,4 +49,3 @@ pipeline {
         
     }
 }
-
