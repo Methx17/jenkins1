@@ -48,5 +48,18 @@ pipeline {
         }
         
     }
+
+    post {
+        success {
+            mail bcc: '', body: 'hello jenkins job is successful', 
+                cc: '', from: '', replyTo: '', subject: 'jenkins job success', 
+                to: 'dayanandgowda.ty@gmail.com'
+        }
+        failure {
+            mail bcc: '', body: 'hello jenkins job is unsuccessful', 
+                cc: '', from: '', replyTo: '', subject: 'jenkins job unsuccess', 
+                to: 'dayanandgowda.ty@gmail.com'
+        }
+    }
 }
 
