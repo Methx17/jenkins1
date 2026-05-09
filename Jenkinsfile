@@ -51,14 +51,42 @@ pipeline {
 
     post {
         success {
-            mail bcc: '', body: 'hello jenkins job is successful', 
-                cc: '', from: '', replyTo: '', subject: 'jenkins job success', 
-                to: 'dayanandgowda.ty@gmail.com'
+            mail bcc: '', 
+                 body: """Hi Team,
+
+            Job Name: ${env.JOB_NAME}
+            Build Number: ${env.BUILD_NUMBER}
+            Status: SUCCESS
+            Branch: ${env.GIT_BRANCH}
+            Commit: ${env.GIT_COMMIT}
+            
+            Logs: ${env.BUILD_URL}console
+            
+            Regards,
+            Jenkins
+            """, 
+             cc: '', from: '', replyTo: '', 
+             subject: "[Jenkins] ${env.JOB_NAME} #${env.BUILD_NUMBER} - Success", 
+             to: 'dayanandgowda.ty@gmail.com'
         }
         failure {
-            mail bcc: '', body: 'hello jenkins job is unsuccessful', 
-                cc: '', from: '', replyTo: '', subject: 'jenkins job unsuccess', 
-                to: 'dayanandgowda.ty@gmail.com'
+            mail bcc: '', 
+                 body: """Hi Team,
+
+                Job Name: ${env.JOB_NAME}
+                Build Number: ${env.BUILD_NUMBER}
+                Status: FAILED
+                Branch: ${env.GIT_BRANCH}
+                Commit: ${env.GIT_COMMIT}
+                
+                Logs: ${env.BUILD_URL}console
+                
+                Regards,
+                Jenkins
+                """, 
+                 cc: '', from: '', replyTo: '', 
+                 subject: "[Jenkins] ${env.JOB_NAME} #${env.BUILD_NUMBER} - Failed", 
+                 to: 'dayanandgowda.ty@gmail.com'
         }
     }
 }
