@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-                git credentialsId: 'github-cred', url: 'https://github.com/dayanandagowda222/pyapp.git'
+                fgc git credentialsId: 'github-cred', url: 'https://github.com/dayanandagowda222/pyapp.git'
             }
         }
         stage('test and install') {
