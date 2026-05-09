@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-                fgc git credentialsId: 'github-cred', url: 'https://github.com/dayanandagowda222/pyapp.git'
+                git credentialsId: 'github-cred', url: 'https://github.com/dayanandagowda222/pyapp.git'
             }
         }
         stage('test and install') {
@@ -43,7 +43,7 @@ pipeline {
 
         stage('deploy') {
             steps {
-                sh 'docker compose up -d --build'
+                sh 'docker compose up -ooo -d --build'
             }
         }
         
